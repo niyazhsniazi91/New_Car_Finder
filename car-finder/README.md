@@ -17,7 +17,7 @@ Offline-first car comparison app and Android wrapper built from the 13 brochures
 
 ## Build
 
-Requirements: Node.js 22.13+ (or 24+), Java 21, Android SDK Platform 35/build tools, and Python with `openpyxl`.
+Requirements: Node.js 22.13+ (or 24+), Java 11, Android SDK Platform 33/build tools, and Python with `openpyxl`.
 
 ```powershell
 npm.cmd install
@@ -31,7 +31,8 @@ Open `http://localhost:4173`. The service worker caches the app shell and PDF re
 To generate the Android debug APK:
 
 ```powershell
-$env:JAVA_HOME = "<path to JDK 21>"
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-11"
+$env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
 $env:ANDROID_HOME = "$env:LOCALAPPDATA\Android\Sdk"
 $env:ANDROID_SDK_ROOT = $env:ANDROID_HOME
 npm.cmd run android:apk

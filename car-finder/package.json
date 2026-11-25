@@ -12,11 +12,11 @@
     "android:apk": "npm run android:sync && cd android && gradlew.bat assembleDebug && cd .. && node copy-apk.mjs"
   },
   "dependencies": {
-    "@capacitor/android": "^7.4.3",
-    "@capacitor/core": "^7.4.3",
+    "@capacitor/android": "4.8.2",
+    "@capacitor/core": "4.8.2",
     "pdfjs-dist": "^6.5.438"
   },
   "devDependencies": {
-    "@capacitor/cli": "^7.4.3"
+    "@capacitor/cli": "4.8.2"
   }
 }

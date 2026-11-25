@@ -1,4 +1,4 @@
-const CACHE = "car-finder-shell-mwwf4g10";
+const CACHE = "car-finder-shell-mwwhbs85";
 const CORE = [
   "./",
   "./index.html",

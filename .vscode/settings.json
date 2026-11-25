@@ -1,3 +1,14 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.import.gradle.java.home": "C:\\Program Files\\Java\\jdk-11",
+    "gradle.nestedProjects": [
+        "android"
+    ],
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-11",
+            "path": "C:\\Program Files\\Java\\jdk-11",
+            "default": true
+        }
+    ]
 }

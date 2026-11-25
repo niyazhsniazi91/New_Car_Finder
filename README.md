@@ -28,4 +28,4 @@ Open [http://localhost:4173](http://localhost:4173).
 
 See [Car Finder build and project guide](./car-finder/README.md), [web app guide](./car-finder/README-WEB.md), and [Android app guide](./car-finder/README-ANDROID.md).
 
-`npm.cmd run workbook` regenerates the workbook. `npm.cmd run android:apk` builds the debug Android APK; it requires JDK 21 and Android SDK Platform 35. Generated web and Android build folders, local IDE settings, signing files, and APKs are excluded from Git.
+`npm.cmd run workbook` regenerates the workbook. `npm.cmd run android:apk` builds the debug Android APK; it requires JDK 11 and Android SDK Platform 33. Generated web and Android build folders, local IDE settings, signing files, and APKs are excluded from Git.

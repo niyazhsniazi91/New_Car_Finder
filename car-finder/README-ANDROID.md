@@ -23,13 +23,13 @@ This is a debug-signed APK, not a Play Store release. Android may show a sideloa
 Requirements on the build computer:
 
 - Node.js 22.13+ (or 24+).
-- JDK 21.
-- Android SDK Platform 35 and Build Tools 35.0.0.
+- JDK 11.
+- Android SDK Platform 33 and Build Tools 33.0.2.
 
 In PowerShell, from the `car-finder` folder:
 
 ```powershell
-$env:JAVA_HOME = "C:\path\to\jdk-21"
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-11"
 $env:ANDROID_HOME = "$env:LOCALAPPDATA\Android\Sdk"
 $env:ANDROID_SDK_ROOT = $env:ANDROID_HOME
 $env:PATH = "$env:JAVA_HOME\bin;$env:ANDROID_HOME\platform-tools;$env:PATH"
