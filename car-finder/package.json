@@ -1,0 +1,22 @@
+{
+  "name": "niyaz-car-finder",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Offline-first car buying comparison app",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node server.mjs",
+    "workbook": "python tools/generate_workbook.py",
+    "android:sync": "npm run build && npx cap sync android",
+    "android:apk": "npm run android:sync && cd android && gradlew.bat assembleDebug && cd .. && node copy-apk.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "pdfjs-dist": "^6.5.438"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3"
+  }
+}

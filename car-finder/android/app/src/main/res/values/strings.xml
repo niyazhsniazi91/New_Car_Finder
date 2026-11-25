@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Car Finder</string>
+    <string name="title_activity_main">Car Finder</string>
+    <string name="package_name">in.niyaz.carfinder</string>
+    <string name="custom_url_scheme">in.niyaz.carfinder</string>
+</resources>

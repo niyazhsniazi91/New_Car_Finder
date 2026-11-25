@@ -1,0 +1,8 @@
+{
+  "appId": "in.niyaz.carfinder",
+  "appName": "Car Finder",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

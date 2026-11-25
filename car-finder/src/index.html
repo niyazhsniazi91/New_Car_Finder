@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11142b">
+  <meta name="description" content="Offline-first car finder with brochure imports, side-by-side comparisons, and city-specific price estimates.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Car Finder | Make your next drive yours</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Car Finder home"><span class="brand-mark">CF</span><span>CAR<span class="brand-accent">FINDER</span></span></a>
+    <div class="topbar-right">
+      <span class="offline-pill"><i></i><span id="connection-label">Offline ready</span></span>
+      <button class="button button-outline" id="install-button" hidden>Install app</button>
+      <button class="button button-bright" id="upload-top">＋ Add brochure</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="spark">✳</span> YOUR NEXT CAR, WITHOUT THE GUESSWORK</p>
+        <h1>Find the one<br><span class="gradient-text">that fits your life.</span></h1>
+        <p class="hero-lede">Compare the cars from your brochures, shortlist the right automatic, and see city-wise prices — all in one place, even offline.</p>
+        <div class="hero-actions">
+          <button class="button button-bright button-large" data-go="matches">Explore your matches <span>↗</span></button>
+          <button class="button button-quiet button-large" data-go="filter">Tune your shortlist <span>⌘</span></button>
+        </div>
+        <div class="hero-proof"><span class="proof-star">✦</span><span id="hero-proof">5 exact feature matches from 13 brochures</span><span class="proof-divider"></span><span>Private. Local. Yours.</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-sun"></div><div class="art-car"><span class="car-roof"></span><span class="car-body"></span><span class="wheel wheel-one"></span><span class="wheel wheel-two"></span><span class="car-light"></span></div>
+        <div class="floating-card card-camera"><span class="float-icon">◉</span><span><b>360° view</b><small>See every angle</small></span><i>✓</i></div>
+        <div class="floating-card card-adas"><span class="float-icon">✳</span><span><b>ADAS ready</b><small>Confidence built in</small></span><i>✓</i></div>
+        <div class="art-label">THE ROAD IS YOURS <span>→</span></div>
+      </div>
+    </section>
+
+    <section class="quick-stats" aria-label="Overview">
+      <div class="stat"><strong id="stat-matches">05</strong><span>cars fit your must-haves</span></div>
+      <div class="stat"><strong id="stat-auto">05</strong><span>automatic variants</span></div>
+      <div class="stat"><strong id="stat-price">₹11.7L</strong><span>lowest on-road · Mumbai</span></div>
+      <div class="stat"><strong id="stat-brochures">13</strong><span>brochures analysed</span></div>
+      <div class="stat stat-chip"><span class="shield">✓</span><span>Works offline<br><b>Your data stays on this device</b></span></div>
+    </section>
+
+    <nav class="tabs" aria-label="Car finder sections">
+      <button class="tab active" data-tab="dashboard">Overview</button>
+      <button class="tab" data-tab="matches">Your matches <span class="tab-count" id="tab-match-count">5</span></button>
+      <button class="tab" data-tab="compare">Compare</button>
+      <button class="tab" data-tab="filter">Smart filters</button>
+      <button class="tab" data-tab="ranking">Rankings</button>
+      <button class="tab" data-tab="library">Brochure library</button>
+    </nav>
+
+    <section class="panel active" id="panel-dashboard">
+      <div class="section-heading">
+        <div><p class="eyebrow">A BETTER FIT STARTS HERE</p><h2>Your best match depends on <span class="gradient-text">your kind of drive.</span></h2></div>
+        <label class="inline-select">City <select id="city-select"><option value="bengaluru">Bengaluru</option><option value="mumbai">Mumbai</option></select></label>
+      </div>
+      <div class="usecase-grid" id="usecase-grid"></div>
+      <div class="dashboard-bottom">
+        <div class="panel-card recommendation" id="recommendation-card"></div>
+        <div class="panel-card snapshot-card">
+          <div class="card-heading"><div><p class="eyebrow">YOUR NON-NEGOTIABLES</p><h3>Built into the shortlist</h3></div><span class="tiny-star">✦</span></div>
+          <div class="must-have-list">
+            <div><span class="check-dot">✓</span><span><b>Automatic gearbox</b><small>CVT · IVT · DCT · DSG · DCA · AT</small></span></div>
+            <div><span class="check-dot">✓</span><span><b>360° surround camera</b><small>Documented on qualifying trim</small></span></div>
+            <div><span class="check-dot">✓</span><span><b>ADAS driver assistance</b><small>Documented on qualifying trim</small></span></div>
+          </div>
+          <p class="tiny-note">Trim-level fitment matters: some features are available only on the flagship automatic, not every variant.</p>
+        </div>
+      </div>
+      <div class="note-banner"><span class="note-icon">i</span><span><b>Worth knowing:</b> the Citroën Aircross X is the brochure set’s only 5+2-seat option, but its brochure does not establish ADAS and makes the 360° camera a paid dealer accessory. It is shown as a near-match, not an exact match.</span><button data-go="filter">See why →</button></div>
+    </section>
+
+    <section class="panel" id="panel-matches">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE SHORTLIST</p><h2>Five cars. <span class="gradient-text">Your must-haves.</span></h2><p class="section-subtitle">Only models with a brochure-documented automatic trim that has both 360° camera and ADAS are included.</p></div>
+        <label class="inline-select">On-road city <select id="matches-city"><option value="bengaluru">Bengaluru</option><option value="mumbai">Mumbai</option></select></label>
+      </div>
+      <div class="match-strip"><span>✓ Automatic</span><span>✓ 360° camera</span><span>✓ ADAS</span><span>5 seats</span><span>Indicative prices · verify exact trim</span></div>
+      <div class="car-grid" id="matches-grid"></div>
+      <div class="near-match-box"><div><p class="eyebrow">ALMOST, BUT NOT QUITE</p><h3>One flexible 5+2 option</h3><p>The Aircross X has a 5+2 layout and automatic petrol option. The brochure lists its 360° camera as an extra-cost dealer accessory and does not list ADAS, so it fails your must-have filter.</p></div><button class="button button-outline" data-show-near>View near-match</button></div>
+    </section>
+
+    <section class="panel" id="panel-compare">
+      <div class="section-heading">
+        <div><p class="eyebrow">BROCHURE + CARDEKHO SPECS</p><h2>Compare your <span class="gradient-text">finalists.</span></h2><p class="section-subtitle">Select up to four of all 13 cars. Compare brochure findings, city prices, and detailed CarDekho specifications side by side.</p></div>
+        <label class="inline-select">City <select id="compare-city"><option value="bengaluru">Bengaluru</option><option value="mumbai">Mumbai</option></select></label>
+      </div>
+      <div class="compare-controls" id="compare-picks"></div>
+      <div class="compare-wrap" id="compare-table-wrap"></div>
+    </section>
+
+    <section class="panel" id="panel-filter">
+      <div class="section-heading">
+        <div><p class="eyebrow">MAKE IT PERSONAL</p><h2>Your filters. <span class="gradient-text">Your shortlist.</span></h2><p class="section-subtitle">Adjust budget, seats, transmission, fuel and use-case. Your non-negotiables are on by default.</p></div>
+        <button class="button button-outline" id="reset-filters">Reset filters</button>
+      </div>
+      <div class="filter-layout">
+        <form class="filter-card" id="filter-form">
+          <label class="field-label">City for on-road estimate<select id="filter-city"><option value="bengaluru">Bengaluru</option><option value="mumbai">Mumbai</option></select></label>
+          <label class="field-label">Maximum on-road budget <span class="range-current" id="budget-label">₹24 lakh</span><input id="budget-range" type="range" min="5" max="30" step="0.5" value="24"></label>
+          <label class="field-label">Seats<select id="seats-filter"><option value="any">Any seat count</option><option value="5">5 seats</option><option value="7">7 seats (incl. 5+2)</option></select></label>
+          <label class="field-label">Automatic type<select id="transmission-filter"><option value="any">Any automatic</option><option value="DCT">DCT / DCA / DSG</option><option value="AT">Torque-converter AT</option><option value="CVT">CVT / IVT</option><option value="AMT">AMT</option></select></label>
+          <label class="field-label">Fuel preference<select id="fuel-filter"><option value="any">Any fuel</option><option value="Petrol">Petrol</option><option value="Diesel">Diesel</option><option value="CNG">CNG</option></select></label>
+          <label class="field-label">Primary usage<select id="usage-filter"><option value="family">Family & mixed use</option><option value="city">Mostly city / commute</option><option value="highway">Highway trips</option><option value="value">Value for money</option><option value="technology">Features & technology</option></select></label>
+          <div class="filter-locks">
+            <label><input id="need-auto" type="checkbox" checked> Automatic transmission</label>
+            <label><input id="need-camera" type="checkbox" checked> 360° camera</label>
+            <label><input id="need-adas" type="checkbox" checked> ADAS</label>
+            <small>Uncheck a must-have only if you're open to a near-match.</small>
+          </div>
+          <button class="button button-bright filter-submit" type="submit">Show matching cars <span>→</span></button>
+        </form>
+        <div class="filter-results"><div class="filter-result-heading"><span id="filter-count">5 cars</span><span>Sorted by fit for your usage</span></div><div id="filter-grid" class="car-grid filter-grid"></div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-ranking">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE FIELD GUIDE</p><h2>A considered order. <span class="gradient-text">Not a universal truth.</span></h2><p class="section-subtitle">Scores reward your non-negotiables, practical value and the chosen usage. Adjust city/use-case to re-rank.</p></div>
+        <label class="inline-select">Usage <select id="ranking-usage"><option value="family">Family & mixed use</option><option value="city">City / commute</option><option value="highway">Highway trips</option><option value="value">Value for money</option><option value="technology">Technology</option></select></label>
+      </div>
+      <div class="ranking-legend"><span>Method: 45% use-case fit</span><span>20% price fit</span><span>20% required feature fit</span><span>15% practicality</span></div>
+      <div id="ranking-list" class="ranking-list"></div>
+      <p class="tiny-note">Editorial decision aid based on brochure/price data and explicit weights. This is not a safety rating, road test or ownership-cost prediction.</p>
+    </section>
+
+    <section class="panel" id="panel-library">
+      <div class="section-heading">
+        <div><p class="eyebrow">GROW YOUR GARAGE</p><h2>Your brochures, <span class="gradient-text">your private library.</span></h2><p class="section-subtitle">Import a car brochure. Text is read on this device, searchable evidence is extracted, and a draft car is added for your review.</p></div>
+        <button class="button button-bright" id="upload-library">＋ Upload PDF brochures</button>
+      </div>
+      <div class="upload-zone" id="drop-zone" tabindex="0"><div class="upload-icon">↑</div><h3>Drop brochure PDFs here</h3><p>Or choose files from this device. PDF processing works offline once the app is installed.</p><span>PDF files · processed locally · no account or upload server</span><button class="button button-outline" id="browse-files">Choose files</button></div>
+      <input id="file-input" type="file" accept="application/pdf,.pdf" multiple hidden>
+      <div class="upload-progress" id="upload-progress" hidden><div class="progress-label"><span id="progress-text">Reading brochure…</span><span id="progress-percent">0%</span></div><div class="progress-track"><div id="progress-bar"></div></div></div>
+      <div id="import-message" class="import-message" hidden></div>
+      <div class="library-heading"><div><p class="eyebrow">ANALYSED SO FAR</p><h3 id="library-count">13 brochures</h3></div><div class="library-actions"><button class="button button-outline" id="export-data">Export library</button><button class="button button-outline" id="import-data">Import library</button><input id="json-input" type="file" accept="application/json,.json" hidden></div></div>
+      <div class="brochure-list" id="brochure-list"></div>
+      <div class="sync-note"><span class="note-icon">↗</span><span><b>Across your devices:</b> offline uploads update the app where you import them. Export this library JSON and import it in the other app/device to transfer the same cars and prices. The Web app and APK share the same features; uploads do not silently sync between separate offline installations.</span></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="brand"><span class="brand-mark">CF</span><span>CAR<span class="brand-accent">FINDER</span></span></div><span>Made for real roads and real decisions.</span><span id="footer-date">Price snapshot · 25 Nov 2026</span></footer>
+
+  <dialog id="car-dialog" class="car-dialog"><button class="dialog-close" id="dialog-close" aria-label="Close">×</button><div id="dialog-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
